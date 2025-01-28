@@ -1,8 +1,11 @@
 ---
-title: "Report for Computer Lab 1 in Computational Statistics"
 author: "Christian Kammerer, Jakob Lindner"
+output:
+  word_document: default
+  html_document:
+    df_print: paged
 ---
-
+# Report for Computer Lab 1 in Computational Statistics
 ## Question 1: Maximization of a function in one variable
 
 $$
@@ -193,8 +196,7 @@ The difference between the result of myvar and the real variance is very big com
 The reason can be so-called catastrophic cancellation. It occurs in the substraction of two nearly equal numbers, which we have in our case because of the large mean and little variance, and results in a loss of precision. Due to computer arithmetics the significant bits are mostly cancelled out and the result depends heavily on the least significant and least accurate bits.
 
 
-### d. How can you better implement a variance estimator? Find and implement a formula that will give
-the same results as var().  
+### d. How can you better implement a variance estimator? Find and implement a formula that will give the same results as var().  
 
 As alternative approach we implement the two-pass algorithm. (source: https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance) 
 It may still face some issues on big datasets but the plot of the results will show how well it performs on our data.
@@ -219,4 +221,5 @@ plot(1:10000, two_pass_diff, xlab= "Index", ylab="diff", main = "Difference of t
 abline(h = 0, col = "red", lty = 2)
 
 ``` 
+  
 It gives the same result as the built-in var()-function for many cases but also deviates for some. As the difference is very small though, the two-pass algorithm performs nearly as good as var().
